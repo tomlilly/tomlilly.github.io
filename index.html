@@ -1,0 +1,119 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Tom Lilly</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Babbling and Projects">
+    </head>
+    <body style="background-color:#E0E0E0;">
+        <article>
+            <h2>Raspberry Pi Projects</h2>
+            <p><strong>Raspberry Pi</strong></p>
+            <p>Currently using a Rasbperry Pi model 3b to self host a PiHole instance and PiVPN making use of wireguard.<br />
+                <a title="" href="https://pi-hole.net/" target="_blank">PiHole</a> is a simple to set up network based ad-blocker. It also acts as my network DHCP server and custom DNS server.<br />
+                By combing PiHole with <a title="" href="https://pivpn.io/" target="_blank">PiVPN</a>, the benefits of PiHole can be extended to any device outside of my home network. By making use of an automation program such as <a title="" href="https://tasker.joaoapps.com/" target="_blank">Tasker</a>,
+                my mobile device can connect to the VPN when I leave my home network for seamless use.<br />
+                Making use of the Raspberry Pi makes this setup incredibly simple and power efficient. I don't have to have my main PC or larger server running to be able to make use of mobile ad-blocking and the low power draw is an added benefit.<br />
+                The following is a brief guide on how to setup a Pihole/PiVPN combination<br />
+            </p>
+            <p><strong>Configuration</strong><br /></p>
+            <p>
+                Start with a fresh install of Raspbian with a static IP. Enabling SSH will allow the Pi to be run headless.<br />
+                From the command line run the command<br />
+            <p><code>curl -sSL https://install.pi-hole.net | bash</code></p>
+                This runs an install script for the latest version of PiHole directly from the developers.<br />
+                As stated in the <a title="" href="https://docs.pi-hole.net/main/basic-install/" target="_blank">official documentation</a>, running a script in this way can be potentially dangerous as it allows code to be run on your machine without you seeing it first.<br />
+                The official documentation linked above provides alternative install options should using the script be of a concern.<br />
+                Once the script has been run, the PiHole dashboard can be accessed through the browser at either<br />
+            <p><code>http://localhost/admin</code></p>
+                from the Raspberry Pi, Or<br />
+            <p><code>http://<em>ip-address</em>/admin</code></p>
+                if accessing from a different device on the network, where <em>ip-address</em> is the statically assigned IP address of the Pi,<br />
+                Or,
+            <p><code>http://pi.hole/admin</code></p>
+                from either.<br />
+                Change the password for the dashoard when prompted.<br />
+                Under Settings > DHCP, tick the box to enable the DHCP server and make sure to disable the DHCP server in your router.<br />
+                There are many more settings to look through, but this is enough if all you are looking to do is block ads on your local network.<br />
+            </p>
+            <p>
+                Should you wish for the benefits of PiHole to follow you on your mobile device, PiVPN works extremely well alongside PiHole and is also simple to set up<br />
+                From the CLI of the Pi running PiHole, run the following command<br />
+            <p><code>curl -L https://install.pivpn.io | bash</code></p>
+                This is again a single command script that installs PiVPN onto your machine.<br />
+                Again, the <a title="" href="https://docs.pivpn.io/install/" target="_blank">official documentation</a> provides alternatives if running a blind script is of concern for you.<br />
+                Follow the on screen prompts, ensuring the IP addresses that the installer finds are correct, select the "pi" user, and when given the option of Wireguard or OpenVPN select Wireguard.<br />
+                The protocol will be installed, and the installer will ask you for a port. I used the default port and made note of it, as it will need to be forwarded in the router.<br />
+                The installer will then say it has found a PiHole installation, and ask you if you want to use it as the DNS. Select yes.<br />
+                Now it's time to specify how your mobile devices connect toyour home network. If your ISP provides a static IP, you can select the public IP shown in the installer.<br />
+                If your public IP is dynamic, which is quite common, you will need to use a dynamic DNS service.<br />
+                <a title="" href="https://www.duckdns.org/" target="_blank">Duck DNS</a> is a good, free option which I have used for a number of years.<br />
+                Sign up for a dynamic DNS and link it to your public IP. There are numerous ways to update your DNS when your home public IP address changes but that is outside the scope of this document.<br />
+                Select DNS entry in the installer, and then provide the dynamic DNS you created. If using Duck DNS it will be <em>example</em>.duckdns.org<br />
+                Continue the installer and reboot when asked.<br />
+                We now need to add a profile for your mobile device<br />
+                From the command line, enter<br />
+            <p><code>pivpn -a</code></p>
+                Enter a name for the profile when prompted and the keys and config will be generated.<br />
+                <em>example</em>.conf will be generated and placed into<br />
+            <p><code>home/pi/configs</code></p>
+                This file needs to be moved to your mobile device. You can either navigate to the location using FTP or SMB, or make use of the included qr code generator.<br />
+                To use the qr generator, enter<br />
+            <p><code>pivpn -qr [<em>profilename</em>]</code></p>
+                where [<em>profilename</em>] is the name you defined in the previous step.<br />
+                Install the Wireguard app from your chosen app store, hit the floating "+" sign to add a new profile, select the qr code option and scan the previously generated qr code.<br />
+                Thats it. When using mobile data you can connect to your home network using Wireguard and enjoy the benefits the PiHole provides at home.<br />
+            </p>
+
+            <p><strong>Other Raspberry Pi Projects</strong></p>
+            <p>
+                I have used Raspberry Pis for many projects
+                <ul type="disc">
+                    <li>RetroPi for game emulation. Recently 100% Tony Hawk's Pro Skater 2. Lets play graffiti.</li>
+                    <li>Paired with a webcam in my garage to check I shut the garage door when away from home. Intending to modify the control box to allow for opening/closing the door via a mobile app.</li>
+                    <li>File server. At numerous points I have set up temporary file servers using a USB drive and RPi.</li>
+                    <li>Aspirations to use my Pi Zero w as a battery powered "ring" style doorbell, have been saving for a 3D printer to enable more projects like this</li>
+                    <li>General linux computing. I find great joy in such a small device on the network always available for a quck bit of linux</li>
+                    <li>etc.</li>
+                </ul>
+                The numerous RPis I have around the house are invaluable to me and are regularly in use for a variety of different projects. My 4 year old sons first PC is going to be some flavour of RPi and I am very much looking forward to<br />
+                being a part of his computing journey and I plan to make use of the extensive learning projects tailored for the RPi.
+            </p>
+            <h2>Arduino Project</h2>
+            <p>
+                My experience with microcontrollers is relatively limited, but I have used them in the past.<br />
+                My favorite Arduino project to date is a DIY ambient lighting rig that hung on the back of a monitor. An Arduino Uno and a basic sketch took small screenshots around the edge of the screen, calculated the average colour, and output that colour<br />
+                to a number of RGB LEDs mounted to a frame. The result was a dynamic ambient lighting system that projected the edge colours of whatever program was running onto the wall behind the monitor.<br />
+
+                <img src="img/ambient.jpg" alt="Arduino ambient rig"><br />
+
+                This project was an excellent introduction to the Arduino and sketches. The only reason I don't use the rig anymore is due to monitor size upgrades.
+            </p>
+            <p><strong>Other Projects</strong></p>
+            <p>
+                I have many other projects.<br />
+                <ul type="disc">
+                    <li>As a hobbyist muscician, effect pedals are of particular interest to me. I have recently constructed a small dual footswitch for use in conjunction with other pedals. This was a very simple project making use of a couple of DPDT<br />
+                    switches, some SPDT toggle switches, a 1/4in stereo input jack, and an enclosure. The result saved me $80 and gave me that feeling you get when you make something yourself.</li>
+                    <li>I self host numerous applications on my home server, recently discovering Docker. An example of some things I run;</li>
+                        <ul type="circle">
+                            <li><a title="" href="https://github.com/sissbruecker/linkding" target="_blank">Linkding</a> - a bookmark organiser with access from any device</li>
+                            <li>A minecraft server making use of <a title="" href="https://geysermc.org/" target="_blank">geyserMC</a>, a translation layer that allows my son to join from the Playstation while I play on Java edition</li>
+                            <li><a title="" href="https://github.com/the-paperless-project/paperless" target="_blank">Paperless</a> - Centralised document storage I use for organising my university textbooks and resources</li>
+                            <li><a title="" href="https://syncthing.net/" target="_blank">Syncthing</a> - For automated sync of documents between various devices</li>
+                            <li><a title="" href="https://bitwarden.com/" target="_blank">Bitwarden</a> - An open source password manager</li>
+                            <li><a title="" href="https://gittea.dev/" target="_blank">Gitea</a> - A self hosted Git service, primarily used for storage of notes</li>
+                        </ul>
+                    <li>I am passionate about open source software, In the future I aim to contribute to more projects</li>
+                    <li>I supply control panel assemblies to a local manufacturing company as a side job</li>
+                    <li>I am currently restoring an old drumkit</li>
+                    <li>This page you are viewing now. I created this basic page to showcase a handful of small of projects to bundle with my application for a position with Core Electronics.</li>  
+                </ul>
+            </p>
+
+            <p>
+                I truly enjoy tinkering and the opportunity to join a startup with shared ideas is very exciting.<br />
+                I look forward to discussing the position with you at your earliest convinience.
+            </article>
+    </body>
+    </html>
