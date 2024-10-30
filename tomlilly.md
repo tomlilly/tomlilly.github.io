@@ -14,7 +14,7 @@ tom@tomlilly.au
 
 ### Charles Sturt University | <location> Online </location> <time> Feb 2021 – Present </time>
 
-- Bachelor's Degree Information Technology in Cybersecurity
+- Bachelor's Degree Information Technology in Cybersecurity - Studying part time
 - Transitioned from previous degree studies focused on programming
 
 ### Tafe NSW | <location> Glendale/Bathurst </location> <time> 2013 - 2014 </time>
@@ -25,7 +25,21 @@ tom@tomlilly.au
 
 ## Experience
 
-### IT Support Technician <time> 2021 - 2022 </time>
+### IT Helpdesk Support Officer <time> 2023 - Current </time>
+
+<location> Turnbull Hill Lawyers </location>
+
+- In house day to day IT support - Freshdesk
+- Remote support for secondary office and offsite/WFH staff
+- Exchange, Sharepoint, Teams, Active Directory
+- 3CX administration, support, troubleshooting
+- Liasing with third party 
+- Cyber security training, support, administration
+- Technical documentation creation and maintenance
+- Legal practice management program support
+- Hardware purchasing, provisioning, decommissioning, maintenance, and support
+
+### IT Support Technician <time> 2021 - 2023 </time>
 
 <location> Newcastle Home Technology Solutions </location>
 
@@ -39,6 +53,8 @@ tom@tomlilly.au
 
 - National Broadband Network technician
 - Identifying, documenting, resolving complex issues in the NBN
+- Self directed workload management across the larger NSW area
+- Engagement with various stakeholders including customers, contractors, NBNco, etc
 
 ### Copper Fault Technician <time> Oct 2016 - Aug 2017 </time>
 
@@ -52,7 +68,7 @@ tom@tomlilly.au
 - Sound Windows, Linux, and Mac operating system knowledge and experience
 - Broad networking experience, from physical implementations to Cisco Systems configurations
 - Fundamental programming. Python, Java
-- Documentation including technical reports and map drawing
+- Extensive ocumentation experience including technical reports and map design
 
 ## Interests
 
