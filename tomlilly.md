@@ -47,7 +47,7 @@ tom@tomlilly.au
 - In home technical support
 - Specialising in network maintenance and optimisation
   
-### Copper Jointer/Technician <time> Aug 2017 - Jun 2021 </time>
+### Copper Jointer/Technician <time> 2017 - 2021 </time>
 
 <location> Ventia/Visionstream </location>
 
@@ -56,7 +56,7 @@ tom@tomlilly.au
 - Self directed workload management across the larger NSW area
 - Engagement with various stakeholders including customers, contractors, NBNco, etc
 
-### Copper Fault Technician <time> Oct 2016 - Aug 2017 </time>
+### Copper Fault Technician <time> 2016 - 2017 </time>
 
 <location> Trilogie Resourcing </location>
 
